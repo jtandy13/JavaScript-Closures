@@ -120,7 +120,31 @@ console.log(typeof(key())); // object
 ```
 
 ## Wait! Usually closures look much more complicated than that!
-Although my examples above may be simplistic, they are still JavaScript closures. Usually the barrier to understanding closures is the syntactical complexity piled on top of them. Let's break down the syntax a bit.
+Although the examples above may be simplistic, they are still JavaScript closures. The point is to show how placing a function inside another scope is like sending in a spy to an enemy base. That spy may have tons of useful information for us but we need a communication route outside the enemy base in order to have access to that information. 
 
-### Form 1:
+Usually the barrier to understanding closures is the syntactical complexity piled on top of them. Let's break down the syntax a bit.
+
+### Form 1: A function that returns a function
+Since we know that strategically declaring a function inside a specific scope gives the function access to that scope, having a way to call that function outside the scope gives us access to it's contents. Here's one way we can do it without using the "let" keyword inside a random block.
+
+```javascript
+function bar() {
+    var foo = 5;
+    return function() { 
+        foo++;
+        return foo; 
+    }
+}
+
+var myBar = bar();
+myBar(); // 6
+myBar(); // 7
+myBar(); // 8
+console.log(myBar.foo); // undefined*/
+```
+The core principle of a closure still appies here. We've got a function declared inside a scope that we normally wouldn't have access to in order to gain access to that scope's contents. 
+
+When we declare myBar to be the result of bar(), myBar becomes a function which has access to the scope that it was declared in and therefore has access to foo. Variable foo cannot be safely destroyed by the garbage collector in JavaScript because it's still needed by myBar. What would happen if myBar() were called and the variable foo no longer existed? For this reason foo is kept alive. 
+
+### An IIFE. A whaty???
 
