@@ -6,7 +6,7 @@ Closures are one way to solve the problem of having private variables in Javascr
 
 In a language like C#, the "private" keyword can be used to protect class members from being directly accessed from outside the class. 
 
-Example below taken from https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/private
+Example below taken and adapted from https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/private
 ```c#
 class Employee
 {
@@ -43,4 +43,17 @@ class PrivateTest
     }
 }
 ```
+In JavaScript, we don't have this option. We have to implement private variables in a different way. Closures are just one option of getting this done.
 
+## What is a closure?
+I'll save my attempt to define this for you for later. I want to build up to a definition one example at a time.
+
+To understand closures, we first need to talk a bit about variable scope in JavaScript. We can define a variable in JavaScript with the "var", "let", and "const" keywords. We'll just concentrate on "var" and "let".
+
+```javascript
+{
+    var foo = "bar";
+}
+console.log(foo); // "bar"
+```
+In the example above, variable foo is defined with the keyword "var" inside a block. When we print to the console, we can still access the variable foo without any trouble. The "var" keyword
