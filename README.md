@@ -184,3 +184,5 @@ console.log(foo); // ReferenceError: foo is not defined
 So all we've basically done here is improve on the example from Form 1. Declaring and invoking the function "bar" is now a one step process. Since the function expression is a nameless or "anonymous" function, we've saved one variable in the process as well. We don't need "myBar" this time to hold the result of the function; "bar" already does this.
 
 In short, you will often see IIFEs being used to create closure becuase it's so economical.
+
+## Form 3 The modular pattern
