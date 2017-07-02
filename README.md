@@ -43,10 +43,10 @@ class PrivateTest
     }
 }
 ```
-In JavaScript, we don't have this option. We have to implement private variables in a different way. Closures are just one option of getting this done.
+In JavaScript, we don't have this option so readily available. We have to implement private variables in a different way. Closures are just one way of getting this done.
 
 ## What is a closure?
-I'll save my attempt to define this for you for later. I want to build up to a definition one example at a time.
+I'll save my attempt to define this for you for later. I'd to build up to a definition one example at a time.
 
 To understand closures, we first need to talk a bit about variable scope in JavaScript. We can define a variable in JavaScript with the "var", "let", and "const" keywords. We'll just concentrate on "var" and "let".
 
@@ -142,12 +142,12 @@ myBar(); // 7
 myBar(); // 8
 console.log(foo); // ReferenceError: foo is not defined
 ```
-The core principle of a closure still appies here. We've got a function declared inside a scope that we normally wouldn't have access to in order to gain access to that scope's contents. 
+The core principle of a closure still applies here. We've got a function declared inside a scope that we normally wouldn't have access to in order to gain access to that scope's contents. 
 
 When we declare myBar to be the result of bar(), myBar becomes a function which has access to the scope that it was declared in and therefore has access to foo. Variable foo cannot be safely destroyed by the garbage collector in JavaScript because it's still needed by myBar. What would happen if myBar() were called and the variable foo no longer existed? For this reason foo is kept alive. 
 
 ### Form 2: An IIFE (pronounced: iffy). A whaty???
-The acronym IIFE stands for Immediately Invoked Function Expression. The examples below are equivalent. The only difference is that example two requires less syntax.
+The acronym IIFE stands for Immediately Invoked Function Expression. The examples below are equivalent. The only difference is that the second example requires less syntax.
 
 ```javascript
 function foo(){
@@ -180,3 +180,7 @@ bar(); // 7
 bar(); // 8
 console.log(foo); // ReferenceError: foo is not defined
 ```
+
+So all we've basically done here is improve on the example from Form 1. Declaring and invoking the function "bar" is now a one step process. Since the function expression is a nameless or "anonymous" function, we've saved one variable in the process as well. We don't need "myBar" this time to hold the result of the function; "bar" already does this.
+
+In short, you will often see IIFEs being used to create closure becuase it's so economical.
