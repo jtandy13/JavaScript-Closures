@@ -140,7 +140,7 @@ var myBar = bar();
 myBar(); // 6
 myBar(); // 7
 myBar(); // 8
-console.log(myBar.foo); // undefined*/
+console.log(foo); // ReferenceError: foo is not defined
 ```
 The core principle of a closure still appies here. We've got a function declared inside a scope that we normally wouldn't have access to in order to gain access to that scope's contents. 
 
@@ -157,8 +157,26 @@ foo(); // "bar"
 ```
 
 ```javascript
-(function {
+(function() {
     return "bar"
 })(); // "bar"
 ```
 
+The fact that the function declaration is wrapped in parenthesis, (function() { return "bar" }), makes it a function expression. The second set parenthesis, (), is what immediately invokes it.
+
+So a closure using an IIFE, will look something like this.
+
+```javascript
+var bar = (function() {
+    var foo = 5;
+    return function() {
+        foo++;
+        return foo;
+    }
+})();
+
+bar(); // 6
+bar(); // 7
+bar(); // 8
+console.log(foo); // ReferenceError: foo is not defined
+```
