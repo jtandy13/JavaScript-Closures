@@ -68,15 +68,53 @@ console.log(foo); // Uncaught ReferenceError: foo is not defined
 ```
 Obviously, the "let" keyword is changing the situation a bit. Our foo variable is no longer accessible outside the block. According to MDN, "let allows you to declare variables that are limited in scope to the block, statement, or expression on which it is used." So our foo variable is now "closed" inside the block scope and private to the block.
 
-Another key concept to understand as a prerequisite to understanding closures is "function scope". Let's take a look.
+So if we take this example one step further, we can create a simple closure. Let's take a look.
 
 ```javascript
-var foo = function() {
-    var bar = "bar";
-    return bar;
+var getFoo;
+{
+    let foo = "bar";
+    getFoo = function(){
+        return foo;
+    }
 }
-foo(); // "bar"
-console.log(bar); // Uncaught ReferenceError: bar is not defined
+getFoo(); // "foo"
 ```
 
-Based on what we said before about the "var" keyword, you may be wondering why the console.log(bar) command throws an error. This is because variables declared inside a function are local to that function. It's similar to our example of creating a local variable with the "let" keyword inside a block.
+We know that the function inside the block will have access to foo becuase it's in the same block. Variable foo is private to the block because it was declared with the "let" keywork, but at the same time we've give access to foo from outside the block with a function getFoo. This is now a simple closure in JavaScript.
+
+MDN defines a closure as "the combination of a function and the lexical environment within which that function was declared." So getFoo is a closure becuase it is a function that comes with a bag of goodies (lexical environment); the block that variable foo is in and anything else that might be contained there. A function in JavaScript has access to whichever scope that it is defined in. A closure is a way to use this to your advantage by strategically placing a function into a scope where the goal is to gain access outside of the scope. So in other words, declaring a function in a scope and making sure that you give access to that function outside of the scope.
+
+If imagery helps, think of it this way. 
+
+There could be a locked castle with no key:
+```javascript
+{
+    let castle = {};
+}
+console.log(typeof(castle)); // undefined
+```
+If we needed to give access to the castle we will need to create a key:
+```javascript
+{
+    let castle = {};
+    function key() {
+        return castle;
+    }
+}
+console.log(typeof(key())); // undefined
+```
+
+There's still a problem here! Think of the first set of brackets as the usual water that surrounds a castle {}. It's like having the key to the castle on the lawn in front of the gate. You still need to get across the water to get the key!
+
+Here's the solution, make the key available on the other side of the water:
+```javascript
+var key;
+{
+    let castle = {};
+    key = function() {
+        return castle;
+    }
+}
+console.log(typeof(key())); // object
+```
