@@ -58,9 +58,25 @@ console.log(foo); // "bar"
 ```
 In the example above, variable foo is defined with the keyword "var" inside a block. When we print to the console outside the block, we can still access the variable foo without any trouble. The reason that this works is to do with the nature of the "var" keyword. According to the Mozilla Developer Network (MDN), "[t]he scope of a variable declared with var is its current execution context, which is either the enclosing function or, for variables declared outside any function, global." In our case, variable foo is not wrapped up in a function so that means that it's going to be available to the global scope. It doesn't matter if it's nested fifty blocks deep, it's still going to be accessible anywhere in our JavaScript program.
 
+We'll get to the "execution context of the enclosing function" stuff a bit later. Let's have a look at another example.
+
 ```javascript
 {
     let foo = "bar";
 }
-console.log(foo); // "bar"
+console.log(foo); // Uncaught ReferenceError: foo is not defined
 ```
+Obviously, the "let" keyword is changing the situation a bit. Our foo variable is no longer accessible outside the block. According to MDN, "let allows you to declare variables that are limited in scope to the block, statement, or expression on which it is used." So our foo variable is now "closed" inside the block scope and private to the block.
+
+Another key concept to understand as a prerequisite to understanding closures is "function scope". Let's take a look.
+
+```javascript
+var foo = function() {
+    var bar = "bar";
+    return bar;
+}
+foo(); // "bar"
+console.log(bar); // Uncaught ReferenceError: bar is not defined
+```
+
+Based on what we said before about the "var" keyword, you may be wondering why the console.log(bar) command throws an error. This is because variables declared inside a function are local to that function. It's similar to our example of creating a local variable with the "let" keyword inside a block.
