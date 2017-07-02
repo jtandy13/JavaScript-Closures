@@ -146,5 +146,19 @@ The core principle of a closure still appies here. We've got a function declared
 
 When we declare myBar to be the result of bar(), myBar becomes a function which has access to the scope that it was declared in and therefore has access to foo. Variable foo cannot be safely destroyed by the garbage collector in JavaScript because it's still needed by myBar. What would happen if myBar() were called and the variable foo no longer existed? For this reason foo is kept alive. 
 
-### An IIFE. A whaty???
+### Form 2: An IIFE (pronounced: iffy). A whaty???
+The acronym IIFE stands for Immediately Invoked Function Expression. The examples below are equivalent. The only difference is that example two requires less syntax.
+
+```javascript
+function foo(){
+    return "bar"
+}
+foo(); // "bar"
+```
+
+```javascript
+(function {
+    return "bar"
+})(); // "bar"
+```
 
