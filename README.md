@@ -56,4 +56,11 @@ To understand closures, we first need to talk a bit about variable scope in Java
 }
 console.log(foo); // "bar"
 ```
-In the example above, variable foo is defined with the keyword "var" inside a block. When we print to the console, we can still access the variable foo without any trouble. The "var" keyword
+In the example above, variable foo is defined with the keyword "var" inside a block. When we print to the console outside the block, we can still access the variable foo without any trouble. The reason that this works is to do with the nature of the "var" keyword. According to the Mozilla Developer Network (MDN), "[t]he scope of a variable declared with var is its current execution context, which is either the enclosing function or, for variables declared outside any function, global." In our case, variable foo is not wrapped up in a function so that means that it's going to be available to the global scope. It doesn't matter if it's nested fifty blocks deep, it's still going to be accessible anywhere in our JavaScript program.
+
+```javascript
+{
+    let foo = "bar";
+}
+console.log(foo); // "bar"
+```
