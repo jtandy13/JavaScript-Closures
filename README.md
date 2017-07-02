@@ -118,3 +118,9 @@ var key;
 }
 console.log(typeof(key())); // object
 ```
+
+## Wait! Usually closures look much more complicated than that!
+Although my examples above may be simplistic, they are still JavaScript closures. Usually the barrier to understanding closures is the syntactical complexity piled on top of them. Let's break down the syntax a bit.
+
+### Form 1:
+
