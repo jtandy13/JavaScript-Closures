@@ -185,7 +185,7 @@ So all we've basically done here is improve on the example from Form 1. Declarin
 
 In short, you will often see IIFEs being used to create closure becuase it's so economical.
 
-## Form 3 The modular pattern
+### Form 3 The modular pattern
 The modular pattern takes the example in Form 2 one step further. Take a look at the example below:
 
 ```javascript
@@ -209,5 +209,5 @@ console.log(module._foo); // undefined
 Our IIFE is now returning an object with a set of functions, not just one function. The modular pattern returns an object. Anything that gets returned in the object with be public. Anything from the IIFE that is not returned in the object will be private. We are using our module to gain full control of how our private variable is retrieved and set.
 
 
-### Conclusion
+## Conclusion
 There are endless informative articles on JavaScript closures on the Internet. Hopefully, my way of explaining it may make the difference between understanding and continued frustration for someone else out there who's been struggling to grasp this concept. In any case, I hope you've got something out of this article. Thanks for reading and happy coding!
