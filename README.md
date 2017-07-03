@@ -206,4 +206,8 @@ module.getFoo(); // "bar"
 console.log(module._foo); // undefined
 ```
 
-Our IIFE is now returning an object with a set of functions, not just one function. The modular pattern returns an object. Anything that gets returned in the object with be public. Anything from the IIFE that is not returned in the object will be private.
+Our IIFE is now returning an object with a set of functions, not just one function. The modular pattern returns an object. Anything that gets returned in the object with be public. Anything from the IIFE that is not returned in the object will be private. We are using our module to gain full control of how our private variable is retrieved and set.
+
+
+### Conclusion
+There are endless informative articles on JavaScript closures. Hopefully, my way of explaining it will make the difference between understanding and frustration for someone else out there. If I can help anyone to understand a topic that I find ...
