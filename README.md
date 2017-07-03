@@ -210,4 +210,4 @@ Our IIFE is now returning an object with a set of functions, not just one functi
 
 
 ### Conclusion
-There are endless informative articles on JavaScript closures. Hopefully, my way of explaining it will make the difference between understanding and frustration for someone else out there. If I can help anyone to understand a topic that I find ...
+There are endless informative articles on JavaScript closures on the Internet. Hopefully, my way of explaining it may make the difference between understanding and continued frustration for someone else out there who's been struggling to grasp this concept. In any case, I hope you've got something out of this article. Thanks for reading and happy coding!
