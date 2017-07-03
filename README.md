@@ -186,3 +186,24 @@ So all we've basically done here is improve on the example from Form 1. Declarin
 In short, you will often see IIFEs being used to create closure becuase it's so economical.
 
 ## Form 3 The modular pattern
+The modular pattern takes the example in Form 2 one step further. Take a look at the example below:
+
+```javascript
+var module = (function(){
+    // Private variable, sometimes marked with an underscore
+    var _foo = "foo";
+
+    return {
+        // These will be a public functions to get and set _foo
+        getFoo: function(){ return _foo },
+        setFoo: function(newVal) { _foo = newVal }
+    }
+})();
+
+module.getFoo(); // "foo"
+module.setFoo("bar");
+module.getFoo(); // "bar"
+console.log(module._foo); // undefined
+```
+
+Our IIFE is now returning an object with a set of functions, not just one function. The modular pattern returns an object. Anything that gets returned in the object with be public. Anything from the IIFE that is not returned in the object will be private.
