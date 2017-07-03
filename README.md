@@ -46,7 +46,7 @@ class PrivateTest
 In JavaScript, we don't have this option so readily available. We have to implement private variables in a different way. Closures are just one way of getting this done.
 
 ## What is a closure?
-I'll save my attempt to define this for you for later. I'd to build up to a definition one example at a time.
+I'll save my attempt to define this for you for later. I'd like to build up to a definition one example at a time.
 
 To understand closures, we first need to talk a bit about variable scope in JavaScript. We can define a variable in JavaScript with the "var", "let", and "const" keywords. We'll just concentrate on "var" and "let".
 
@@ -144,7 +144,7 @@ console.log(foo); // ReferenceError: foo is not defined
 ```
 The core principle of a closure still applies here. We've got a function declared inside a scope that we normally wouldn't have access to in order to gain access to that scope's contents. 
 
-When we declare myBar to be the result of bar(), myBar becomes a function which has access to the scope that it was declared in and therefore has access to foo. Variable foo cannot be safely destroyed by the garbage collector in JavaScript because it's still needed by myBar. What would happen if myBar() were called and the variable foo no longer existed? For this reason foo is kept alive. 
+When we declare myBar to be the result of bar(), myBar becomes a function which has access to the scope that it was declared in and therefore has access to foo. Variable foo cannot be safely destroyed by the garbage collector in JavaScript because it's still potentially needed by myBar. What would happen if myBar() were called and the variable foo no longer existed? For this reason foo is kept alive. 
 
 ### Form 2: An IIFE (pronounced: iffy). A whaty???
 The acronym IIFE stands for Immediately Invoked Function Expression. The examples below are equivalent. The only difference is that the second example requires less syntax.
@@ -190,7 +190,7 @@ The modular pattern takes the example in Form 2 one step further. Take a look at
 
 ```javascript
 var module = (function(){
-    // Private variable, sometimes marked with an underscore
+    // Private variables, sometimes marked with an underscore
     var _foo = "foo";
 
     return {
