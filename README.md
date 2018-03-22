@@ -1,4 +1,4 @@
-# JavaScript-Closures
+# Understanding JavaScript Closures
 Closures in JavaScript can be a difficult concept to grasp for those either new to the language or new to programming. As part of my own learning process I want to explain closures here to anyone who has struggled to find a simple and concise set of examples.
 
 ## What problem do closures solve?
